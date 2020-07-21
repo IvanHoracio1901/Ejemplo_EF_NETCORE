@@ -29,6 +29,17 @@ namespace Ejemplo_EF_NETCORE.Controllers
                 Duracion = new TimeSpan(0,4,25),
                 Titulo = "Aserje"
             });
+
+            var canciones = _cancionService.GetCanciones();
+
+            var cancion = _cancionService.GetCancion(1);
+
+            cancion.Descripcion = "Entidad Cambiada";
+
+            _cancionService.UpdateCancion(cancion);
+
+            _cancionService.DeleteCancion(2);
+
             return new string[] { "value1", "value2" };
         }
 
