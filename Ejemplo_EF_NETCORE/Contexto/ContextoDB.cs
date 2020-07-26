@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Ejemplo_EF_NETCORE.Contexto
@@ -16,6 +17,13 @@ namespace Ejemplo_EF_NETCORE.Contexto
         }
         //Una manera de crear una tabla para migraciones con entity
         public DbSet<Cancion> Canciones { get; set; }
+        public DbSet<Album> albums { get; set; }
+        public DbSet<Autor> autor { get; set; }
+
+        public Task<int> SaveChangeAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

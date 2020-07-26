@@ -11,5 +11,14 @@ namespace Ejemplo_EF_NETCORE.Models
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
         public TimeSpan Duracion { get; set; }
+
+        //Relacionar Cancion con Album
+
+        public Album Album { get; set; }
+        public int AlbumId { get; set; }
+
+        //Relacionar Cancion con Autor
+        public Autor Autor { get; set; }
+        public int AutorId { get; set; }
     }
 }
