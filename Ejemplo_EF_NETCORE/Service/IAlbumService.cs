@@ -8,6 +8,7 @@ namespace Ejemplo_EF_NETCORE.Service
 {
     public interface IAlbumService
     {
+
         void AddAlbum(Album Album);
         void DeleteAlbum(int AlbumId);
         void DeleteAlbum(Album Album);
