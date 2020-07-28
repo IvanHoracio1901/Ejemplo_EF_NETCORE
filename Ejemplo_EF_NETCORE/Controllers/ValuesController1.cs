@@ -14,31 +14,55 @@ namespace Ejemplo_EF_NETCORE.Controllers
     public class ValuesController1 : ControllerBase
     {
         private readonly ICancionService _cancionService;
+        private readonly IAutor _autorService;
+        private readonly IAlbumService _albumService; 
 
-        public ValuesController1(ICancionService cancionService)
+        public ValuesController1(ICancionService cancionService, IAutor autorService, IAlbumService albumService)
         {
             _cancionService = cancionService;
+            _autorService = autorService;
+            _albumService = albumService;
+
         }
         // GET: api/<ValuesController1>
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            _cancionService.AddCancion(new Models.Cancion
+            //_cancionService.AddCancion(new Models.Cancion
+            //{
+            //    Descripcion = "Asereje ja de je",
+            //    Duracion = new TimeSpan(0,4,25),
+            //    Titulo = "Aserje"
+            //});
+
+            //var canciones = _cancionService.GetCanciones();
+
+            //var cancion = _cancionService.GetCancion(1);
+
+            //cancion.Descripcion = "Entidad Cambiada";
+
+            //_cancionService.UpdateCancion(cancion);
+
+            //_cancionService.DeleteCancion(2);
+
+            _albumService.AddAlbum(new Models.Album
             {
-                Descripcion = "Asereje ja de je",
-                Duracion = new TimeSpan(0,4,25),
-                Titulo = "Aserje"
+                Nombre = "Album1"
             });
 
-            var canciones = _cancionService.GetCanciones();
+            _autorService.AddAutor(new Models.Autor
+            {
+                Nombre = "Jose Gomez"
+            });
 
-            var cancion = _cancionService.GetCancion(1);
-
-            cancion.Descripcion = "Entidad Cambiada";
-
-            _cancionService.UpdateCancion(cancion);
-
-            _cancionService.DeleteCancion(2);
+            _cancionService.AddCancion(new Models.Cancion
+            {
+                AutorId = 1,
+                AlbumId = 1,
+                Descripcion = "Cancion de mujeres",
+                Titulo = "Titulo1",
+                Duracion = new TimeSpan(0, 3, 36)
+            });
 
             return new string[] { "value1", "value2" };
         }

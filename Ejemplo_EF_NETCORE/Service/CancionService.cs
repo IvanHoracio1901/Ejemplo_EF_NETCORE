@@ -1,5 +1,6 @@
 ﻿using Ejemplo_EF_NETCORE.Contexto;
 using Ejemplo_EF_NETCORE.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace Ejemplo_EF_NETCORE.Service
 
         public Cancion GetCancion(int CancionId)
         {
-            return _contextoDB.Canciones.Where(x => x.CancionId == CancionId).FirstOrDefault();
+            return _contextoDB.Canciones.Include(x=> x.Autor).Include(x => x.Album).Where(x => x.CancionId == CancionId).FirstOrDefault();
         }
 
         public Cancion UpdateCancion(Cancion cancion)

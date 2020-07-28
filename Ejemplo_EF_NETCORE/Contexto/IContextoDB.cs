@@ -14,6 +14,6 @@ namespace Ejemplo_EF_NETCORE.Contexto
         DbSet<Album> albums { get; set; }
         DbSet<Autor> autor { get; set; }
         int SaveChanges();
-        Task<int> SaveChangeAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default);
+        Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default);
     }
 }

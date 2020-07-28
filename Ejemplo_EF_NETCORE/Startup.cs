@@ -31,6 +31,8 @@ namespace Ejemplo_EF_NETCORE
         {
             services.AddTransient<IContextoDB, ContextoDB>();
             services.AddTransient<ICancionService, CancionService>();
+            services.AddTransient<IAutor, AutorService>();
+            services.AddTransient<IAlbumService, AlbumService>();
 
             services.AddDbContext<ContextoDB>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

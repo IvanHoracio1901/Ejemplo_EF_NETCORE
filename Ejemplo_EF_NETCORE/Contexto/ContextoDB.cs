@@ -20,17 +20,15 @@ namespace Ejemplo_EF_NETCORE.Contexto
         public DbSet<Album> albums { get; set; }
         public DbSet<Autor> autor { get; set; }
 
-        public Task<int> SaveChangeAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             CancionEntityConfig.SetCancionEntityConfig(modelBuilder.Entity<Cancion>());
+            AutorEntityConfig.SetCancionEntityConfig(modelBuilder.Entity<Autor>());
+            AlbumEntityConfig.SetCancionEntityConfig(modelBuilder.Entity<Album>());
             //Otra manera de crear una tabla para migraciones con entity
             //modelBuilder.Entity<Cancion>().ToTable("Canciones");
             //Despues de tener esto hay que ingresa a la CONSOLA DEL ADMINISTRADOR DE PAQUETES e ingresar Add-Migration nombre de la migracion
+
         }
     }
 }
